@@ -8,6 +8,11 @@ use(BetterErrors::Middleware)
 BetterErrors.application_root = __dir__
 BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
+## Home Page ##
+get("/") do
+  erb(:elephant)
+end
+
 # get("/") do
 #   "Hello World"
 # end
@@ -20,11 +25,6 @@ BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 #   "Hopefully this shows up without having to restart the server 🤞🏾"
 # end
 
-## Home Page ##
-get("/") do
-  erb(:elephant)
-end
-
 get("/dice/2/6") do
   first_die = rand(1..6)
   second_die = rand(1..6)
@@ -33,16 +33,6 @@ get("/dice/2/6") do
   outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
   erb(:two_six)
-end
-
-get("/dice/2/6") do
-  first_die = rand(1..6)
-	second_die = rand(1..6)
-  sum = first_die + second_die
-	
-	@outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
-	
-	erb(:two_six)
 end
 
 get("/dice/2/10") do
